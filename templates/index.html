@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notepad</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <link rel="icon" href="../static/notepad-icon_34386 (1).ico" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('form').submit(function(event) {
+                event.preventDefault(); // Отменить стандартное поведение отправки формы
+
+                var formData = $(this).serialize(); // Получить данные формы
+
+                $.ajax({
+                    url: '/submit', // URL-адрес маршрута Flask, который обрабатывает данные формы
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        console.log(response); // Вывести ответ сервера в консоль
+                        // Добавьте здесь код для обновления содержимого страницы
+                    },
+                    error: function(error) {
+                        console.log(error); // Вывести сообщение об ошибке в консоль
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Gartic Show Notepad</h1>
+    </div>
+    <div class="content">
+        <form action="/submit" method="post">
+            <textarea id="text" name="text" placeholder="Write your text here..."></textarea><br>
+
+            <input class="submit_button" type="submit" value="Submit">
+            <input class="submit_button" type="reset" value="Clear">
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
