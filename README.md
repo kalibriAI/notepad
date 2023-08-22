@@ -14,7 +14,7 @@
 Для начала Вам нужно установить Flask - ```pip install flask```
 
 #### Затем нужно установть проект:
-'''cmd
+```sh
 git clone https://github.com/kalibriAI/notepad.git
 cd notepad
 python3 server.py
